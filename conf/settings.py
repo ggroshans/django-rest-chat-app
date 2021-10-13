@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'frontend.apps.FrontendConfig',
+    'chats.apps.ChatsConfig',
 ]
 
 MIDDLEWARE = [
