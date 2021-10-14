@@ -1,3 +1,4 @@
+import "./Main.css"
 import React from "react";
 import ChatRoomList from "./ChatRoomList/ChatroomList";
 import MessageList from "./MessageList/MessageList";
@@ -12,6 +13,7 @@ export default function Main() {
         grabChatRooms()
         grabSpecificChatRoom(4)
         grabMessages(4)
+        console.log(messages)
     }, [])
 
 
@@ -50,13 +52,13 @@ export default function Main() {
     async function grabMessages(id) {
         await fetch(`/api/chatrooms/${id}/messages/`)
             .then((response) => response.json())
-            .then((data) => console.log("geochat?",data));
+            .then((data) => setMessages(data));
     }
 
     return (
-        <div>
+        <div className="main-container">
             <ChatRoomList chatRooms={chatRooms}/>
-            <MessageList />
+            <MessageList messages={messages} grabMessages={grabMessages}/>
         </div>
     );
 }
