@@ -26,7 +26,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1', 'django-chat-app-ggroshansii.herokuapp.com/']
+ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1', 'django-chat-app-ggroshansii.herokuapp.com']
 
 
 # Application definition
