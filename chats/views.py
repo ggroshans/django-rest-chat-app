@@ -13,3 +13,7 @@ class ChatRoomListAPIView(generics.ListAPIView):
 class ChatRoomDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
+
+class MessageListAPIView(generics.ListAPIView):
+    queryset = Message.objects.all()
+    serializer_class = MessageSerializer
