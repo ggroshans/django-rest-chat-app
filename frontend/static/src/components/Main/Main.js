@@ -11,7 +11,7 @@ export default function Main() {
     useEffect(() => {
         grabChatRooms()
         grabSpecificChatRoom(4)
-        renameChatRoom(4, "Geo Chat")
+        grabMessages(4)
     }, [])
 
 
@@ -22,7 +22,7 @@ export default function Main() {
     }
 
     async function grabSpecificChatRoom(id) {
-        await fetch(`/api/chatrooms/${id}`)
+        await fetch(`/api/chatrooms/${id}/`)
             .then((response) => response.json())
             .then((data) => console.log(data));
     }
@@ -47,6 +47,11 @@ export default function Main() {
             .then(data => console.log(data))
     }
     
+    async function grabMessages(id) {
+        await fetch(`/api/chatrooms/${id}/messages/`)
+            .then((response) => response.json())
+            .then((data) => console.log("geochat?",data));
+    }
 
     return (
         <div>

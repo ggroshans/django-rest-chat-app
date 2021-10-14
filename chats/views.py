@@ -1,4 +1,4 @@
-from django.db.models import query
+from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from .serializers import RoomSerializer, MessageSerializer
 from .models import Room, Message
@@ -15,5 +15,10 @@ class ChatRoomDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = RoomSerializer
 
 class MessageListAPIView(generics.ListAPIView):
-    queryset = Message.objects.all()
     serializer_class = MessageSerializer
+
+    def get_queryset(self):
+        room_instance = self.kwargs['chatroom']
+        return Message.objects.filter(room=room_instance)
+
+    
