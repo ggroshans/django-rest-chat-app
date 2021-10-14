@@ -10,7 +10,6 @@ export default function ChatRoomList(props) {
                 console.log('chatRoom', chatRoom)
                 return <ChatRoom {...chatRoom} key={uuidv4()} />
             })}
-
         </div>
     )
 }

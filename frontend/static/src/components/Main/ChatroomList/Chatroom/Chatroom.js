@@ -3,8 +3,7 @@ import React from 'react'
 export default function ChatRoom(props) {
     return (
         <div>
-            Chatroom:
-            {props.name}
+            <button>{props.name}</button>
         </div>
     )
 }
