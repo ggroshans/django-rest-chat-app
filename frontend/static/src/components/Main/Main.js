@@ -10,16 +10,43 @@ export default function Main() {
 
     useEffect(() => {
         grabChatRooms()
-    }, chatRooms)
+        grabSpecificChatRoom(4)
+        renameChatRoom(4, "Geo Chat")
+    }, [])
 
 
     async function grabChatRooms() {
-        await fetch("/api/chatrooms/")
+        await fetch(`/api/chatrooms/`)
             .then((response) => response.json())
             .then((data) => setChatRooms(data));
     }
 
+    async function grabSpecificChatRoom(id) {
+        await fetch(`/api/chatrooms/${id}`)
+            .then((response) => response.json())
+            .then((data) => console.log(data));
+    }
 
+  
+    // async function deleteChatRoom(id) {
+        
+    //     await fetch(`/api/chatrooms/${id}`, {
+    //           method: 'DELETE', 
+    //         });
+    //         return response.json(); 
+    //       }
+
+    async function renameChatRoom(id, nameChange) {
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: nameChange })
+        };
+        await fetch(`/api/chatrooms/${id}`, requestOptions)
+            .then(response => response.json())
+            .then(data => console.log(data))
+    }
+    
 
     return (
         <div>
