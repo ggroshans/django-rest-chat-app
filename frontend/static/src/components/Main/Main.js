@@ -55,9 +55,30 @@ export default function Main() {
             .then((data) => setMessages(data));
     }
 
+    async function postChatRoom(name){
+        let data = {
+            name: name
+        }
+        const response = await fetch(`/api/chatrooms/`, {
+            method: 'POST', 
+            headers: {
+              'Content-Type': 'application/json'
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
+          });
+          return console.log(response.json()); // parses JSON response into native JavaScript objects
+        }
+    
+
+    function changeChatRoom(id) {
+        console.log(id)
+        grabMessages(id)
+    }
+
     return (
         <div className="main-container">
-            <ChatRoomList chatRooms={chatRooms}/>
+            <ChatRoomList chatRooms={chatRooms} changeChatRoom={changeChatRoom}/>
             <MessageList messages={messages} grabMessages={grabMessages}/>
         </div>
     );

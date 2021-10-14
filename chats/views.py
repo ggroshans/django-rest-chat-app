@@ -6,7 +6,7 @@ from .models import Room, Message
 
 # Create your views here.
  
-class ChatRoomListAPIView(generics.ListAPIView):
+class ChatRoomListAPIView(generics.ListCreateAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
     
@@ -14,7 +14,7 @@ class ChatRoomDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
 
-class MessageListAPIView(generics.ListAPIView):
+class MessageListAPIView(generics.ListCreateAPIView):
     serializer_class = MessageSerializer
 
     def get_queryset(self):

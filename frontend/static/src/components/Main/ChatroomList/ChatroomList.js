@@ -6,9 +6,10 @@ export default function ChatRoomList(props) {
     return (
         <div>
             Chat Rooms:
+            <button> + Add Chat Room</button>
             {props.chatRooms.map(chatRoom => {
                 console.log('chatRoom', chatRoom)
-                return <ChatRoom {...chatRoom} key={uuidv4()} />
+                return <ChatRoom {...chatRoom} key={uuidv4()} changeChatRoom={props.changeChatRoom} />
             })}
         </div>
     )
