@@ -1,23 +1,29 @@
 import React from "react";
 import ChatRoomList from "./ChatRoomList/ChatroomList";
 import MessageList from "./MessageList/MessageList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Main() {
     const [chatRooms, setChatRooms] = useState([]);
     const [messages, setMessages] = useState([]);
 
-    function grabChatRooms() {
-        fetch("https://django-chat-app-ggroshansii.herokuapp.com/api/chatrooms/")
+
+    useEffect(() => {
+        grabChatRooms()
+    }, chatRooms)
+
+
+    async function grabChatRooms() {
+        await fetch("/api/chatrooms/")
             .then((response) => response.json())
-            .then((data) => console.log(data));
+            .then((data) => setChatRooms(data));
     }
 
-    grabChatRooms()
+
 
     return (
         <div>
-            <ChatRoomList />
+            <ChatRoomList chatRooms={chatRooms}/>
             <MessageList />
         </div>
     );

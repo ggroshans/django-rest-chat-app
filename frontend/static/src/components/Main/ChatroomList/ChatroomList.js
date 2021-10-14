@@ -1,11 +1,15 @@
 import React from 'react'
 import ChatRoom from './ChatRoom/ChatRoom'
 
-export default function ChatRoomList() {
+export default function ChatRoomList(props) {
     return (
         <div>
             Chat Rooms:
-            <ChatRoom />
+            {props.chatRooms.map(chatRoom => {
+                console.log('chatRoom', chatRoom)
+                return <ChatRoom {...chatRoom} />
+            })}
+
         </div>
     )
 }

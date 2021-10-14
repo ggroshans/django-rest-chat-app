@@ -4,10 +4,10 @@ from .models import Room, Message
 class RoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room
-        fields = ("name",)
+        fields = ("id", "name",)
 
 
 class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
-        fields = ("created_at", "updated_at", "author", "body", "room")
+        fields = ("id", "created_at", "updated_at", "author", "body", "room")
