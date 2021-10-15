@@ -21,3 +21,21 @@
 	margin-top: -10px;
 	margin-right: -10px;
 }
+
+
+.message-icon-container {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.message-icon-container button {
+	height: 20px;
+	width: 20px;
+	background-color: transparent;
+	border: none;
+}
+
+.message-icon-container button:hover {
+	color: #91171f;
+}
+
