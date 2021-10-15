@@ -13,7 +13,6 @@ export default function Main() {
         grabChatRooms()
         // grabSpecificChatRoom(4)
         grabMessages(5)
-        console.log(messages)
     }, [])
 
 
@@ -63,12 +62,13 @@ export default function Main() {
             method: 'POST', 
             headers: {
               'Content-Type': 'application/json'
-              // 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: JSON.stringify(data) // body data type must match "Content-Type" header
-          });
-          return console.log(response.json()); // parses JSON response into native JavaScript objects
+            body: JSON.stringify(data) 
+          })
+          grabChatRooms()
+          return response.json()
         }
+    
     
 
     function changeChatRoom(id) {
