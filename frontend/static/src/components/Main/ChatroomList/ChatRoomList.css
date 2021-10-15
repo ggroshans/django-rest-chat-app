@@ -1,6 +1,8 @@
 
 .chatroom-list-container {
-
-    height: 75vh;
+    height: auto;
+    padding: 0;
     width: 30%;
+    position: sticky;
+    top: 0px;
 }
