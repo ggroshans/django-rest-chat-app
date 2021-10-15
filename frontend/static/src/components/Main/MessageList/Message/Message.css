@@ -22,6 +22,18 @@
 	margin-right: -10px;
 }
 
+.message-bubble input[type='textarea'] {
+	border: 1px lightgray dashed;
+	height: 35px;
+}
+
+.message-bubble input[type='textarea']:focus-visible{
+	border: 1px solid lightgray;
+	box-shadow: 0.1px 0.4px 1px 1px lightgray, -0.1em 0 .4em lightgray;
+	height: 35px;
+	outline: none;
+}
+
 
 .message-icon-container {
 	display: flex;
