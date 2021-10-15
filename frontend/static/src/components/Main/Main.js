@@ -10,9 +10,9 @@ export default function Main() {
     const [currentChatRoom, setCurrentChatRoom] = useState(0)
     const firstRender = useRef(true)
     
+
     useEffect(() => {
         grabChatRooms()
-
         console.log(messages)
     }, [])
 
@@ -23,8 +23,6 @@ export default function Main() {
         else {
             grabMessages(currentChatRoom)
         }
-
-
     }, [currentChatRoom])
     
 
@@ -35,31 +33,24 @@ export default function Main() {
             .then((data) => setChatRooms(data));
     }
 
-    // async function grabSpecificChatRoom(id) {
-    //     await fetch(`/api/chatrooms/${id}/`)
-    //         .then((response) => response.json())
-    //         .then((data) => console.log("geochat", data));
-    // }
-
   
-    // async function deleteChatRoom(id) {
-        
-    //     await fetch(`/api/chatrooms/${id}`, {
-    //           method: 'DELETE', 
-    //         });
-    //         return response.json(); 
-    //       }
+    async function deleteMessage(id) {
+        const response = await fetch(`/api/chatrooms/${currentChatRoom}/messages/${id}/`, {
+              method: 'DELETE', 
+            });
+            return response.json(); 
+          }
 
-    async function renameChatRoom(id, nameChange) {
-        const requestOptions = {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: nameChange })
-        };
-        await fetch(`/api/chatrooms/${id}`, requestOptions)
-            .then(response => response.json())
-            .then(data => console.log(data))
-    }
+    // async function renameChatRoom(id, nameChange) {
+    //     const requestOptions = {
+    //         method: 'PUT',
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify({ name: nameChange })
+    //     };
+    //     await fetch(`/api/chatrooms/${id}`, requestOptions)
+    //         .then(response => response.json())
+    //         .then(data => console.log(data))
+    // }
     
     async function grabMessages(id) {
         await fetch(`/api/chatrooms/${id}/messages/`)
@@ -99,18 +90,14 @@ export default function Main() {
           return response.json()
         }
     
-    
-
     function changeChatRoom(id) {
         setCurrentChatRoom(id)
-
-  
     }
 
     return (
         <div className="main-container">
             <ChatRoomList chatRooms={chatRooms} changeChatRoom={changeChatRoom} postChatRoom={postChatRoom}/>
-            <MessageList messages={messages} grabMessages={grabMessages} postMessage={postMessage}/>
+            <MessageList messages={messages} grabMessages={grabMessages} postMessage={postMessage} deleteMessage={deleteMessage}/>
         </div>
     );
 }

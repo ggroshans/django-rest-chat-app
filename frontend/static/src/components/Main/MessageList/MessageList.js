@@ -20,7 +20,7 @@ function handleSubmit(e) {
     return (
         <div>
             {props.messages.map(message => {
-                return <Message key={uuidv4()} {...message}/>
+                return <Message key={uuidv4()} {...message} deleteMessage={props.deleteMessage}/>
             })}
             <form onSubmit={(e) => handleSubmit(e)}>
             <label htmlFor="chat-message"></label>
