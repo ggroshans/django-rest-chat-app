@@ -8,7 +8,12 @@ export default function MessageList(props) {
             {props.messages.map(message => {
                 return <Message key={uuidv4()} {...message}/>
             })}
-
+            <form>
+            <label htmlFor="chat-message"></label>
+                <input type="textarea" id="chat-message" placeholder="Enter Message"
+                />
+                <button type="submit">Send</button>
+            </form>
         </div>
     )
 }
