@@ -1,4 +1,4 @@
-import "./Main.css"
+import "./Main.css";
 import React from "react";
 import ChatRoomList from "./ChatRoomList/ChatRoomList";
 import MessageList from "./MessageList/MessageList";
@@ -7,25 +7,21 @@ import { useState, useEffect, useRef } from "react";
 export default function Main() {
     const [chatRooms, setChatRooms] = useState([]);
     const [messages, setMessages] = useState([]);
-    const [currentChatRoom, setCurrentChatRoom] = useState(0)
-    const firstRender = useRef(true)
-    
+    const [currentChatRoom, setCurrentChatRoom] = useState(0);
+    const firstRender = useRef(true);
 
     useEffect(() => {
-        grabChatRooms()
-        console.log(messages)
-    }, [])
+        grabChatRooms();
+        console.log(messages);
+    }, []);
 
     useEffect(() => {
-        if(firstRender.current){
+        if (firstRender.current) {
             firstRender.current = false;
+        } else {
+            grabMessages(currentChatRoom);
         }
-        else {
-            grabMessages(currentChatRoom)
-        }
-    }, [currentChatRoom])
-    
-
+    }, [currentChatRoom]);
 
     async function grabChatRooms() {
         await fetch(`/api/chatrooms/`)
@@ -33,14 +29,16 @@ export default function Main() {
             .then((data) => setChatRooms(data));
     }
 
-  
     async function deleteMessage(id) {
-        const response = await fetch(`/api/chatrooms/${currentChatRoom}/messages/${id}/`, {
-              method: 'DELETE', 
-            });
-            grabMessages()
-            return response.json(); 
-          }
+        const response = await fetch(
+            `/api/chatrooms/${currentChatRoom}/messages/${id}/`,
+            {
+                method: "DELETE",
+            }
+        );
+        grabMessages();
+        return response.json();
+    }
 
     // async function renameChatRoom(id, nameChange) {
     //     const requestOptions = {
@@ -52,53 +50,80 @@ export default function Main() {
     //         .then(response => response.json())
     //         .then(data => console.log(data))
     // }
-    
+
     async function grabMessages() {
         await fetch(`/api/chatrooms/${currentChatRoom}/messages/`)
             .then((response) => response.json())
             .then((data) => setMessages(data));
     }
 
-    async function postChatRoom(name){
+    async function postChatRoom(name) {
         let data = {
-            name: name
-        }
+            name: name,
+        };
         const response = await fetch(`/api/chatrooms/`, {
-            method: 'POST', 
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json'
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify(data) 
-          })
-          grabChatRooms()
-          return response.json()
-        }
+            body: JSON.stringify(data),
+        });
+        grabChatRooms();
+        return response.json();
+    }
 
-    async function postMessage(message){
+    async function postMessage(message) {
         let data = {
             room: currentChatRoom,
             author: "username here",
-            body: message
-        }
-        const response = await fetch(`/api/chatrooms/${currentChatRoom}/messages/`, {
-            method: 'POST', 
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data) 
-          });
-          grabMessages()
-          return response.json()
-        }
-    
+            body: message,
+        };
+        const response = await fetch(
+            `/api/chatrooms/${currentChatRoom}/messages/`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            }
+        );
+        grabMessages();
+        return response.json();
+    }
+
+    async function updateMessage(id, obj) {
+        const requestOptions = {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(obj),
+        };
+        const response = await fetch(
+            `/api/chatrooms/${currentChatRoom}/messages/${id}/`,
+            requestOptions
+        );
+        grabMessages()
+        return response.json();
+    }
+
     function changeChatRoom(id) {
-        setCurrentChatRoom(id)
+        setCurrentChatRoom(id);
     }
 
     return (
         <div className="main-container">
-            <ChatRoomList chatRooms={chatRooms} changeChatRoom={changeChatRoom} postChatRoom={postChatRoom}/>
-            <MessageList messages={messages} grabMessages={grabMessages} postMessage={postMessage} deleteMessage={deleteMessage}/>
+            <ChatRoomList
+                chatRooms={chatRooms}
+                changeChatRoom={changeChatRoom}
+                postChatRoom={postChatRoom}
+            />
+            <MessageList
+                messages={messages}
+                grabMessages={grabMessages}
+                postMessage={postMessage}
+                deleteMessage={deleteMessage}
+                updateMessage={updateMessage}
+            />
         </div>
     );
 }
