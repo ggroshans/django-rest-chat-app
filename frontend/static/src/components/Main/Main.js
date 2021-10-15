@@ -30,14 +30,21 @@ export default function Main() {
     }
 
     async function deleteMessage(id) {
-        const response = await fetch(
-            `/api/chatrooms/${currentChatRoom}/messages/${id}/`,
+        await fetch(`/api/chatrooms/${currentChatRoom}/messages/${id}/`,
             {
                 method: "DELETE",
             }
         );
         grabMessages();
-        return response.json();
+    }
+
+    async function deleteChatRoom(id) {
+        await fetch(`/api/chatrooms/${id}/`,
+            {
+                method: "DELETE",
+            }
+        );
+        grabChatRooms();
     }
 
     // async function renameChatRoom(id, nameChange) {
@@ -116,6 +123,7 @@ export default function Main() {
                 chatRooms={chatRooms}
                 changeChatRoom={changeChatRoom}
                 postChatRoom={postChatRoom}
+                deleteChatRoom={deleteChatRoom}
             />
             <MessageList
                 messages={messages}

@@ -51,6 +51,7 @@ export default function ChatRoomList(props) {
                         {...chatRoom}
                         key={uuidv4()}
                         changeChatRoom={props.changeChatRoom}
+                        deleteChatRoom={props.deleteChatRoom}
                     />
                 );
             })}
