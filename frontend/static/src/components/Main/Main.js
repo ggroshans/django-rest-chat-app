@@ -38,6 +38,7 @@ export default function Main() {
         const response = await fetch(`/api/chatrooms/${currentChatRoom}/messages/${id}/`, {
               method: 'DELETE', 
             });
+            grabMessages()
             return response.json(); 
           }
 
@@ -52,8 +53,8 @@ export default function Main() {
     //         .then(data => console.log(data))
     // }
     
-    async function grabMessages(id) {
-        await fetch(`/api/chatrooms/${id}/messages/`)
+    async function grabMessages() {
+        await fetch(`/api/chatrooms/${currentChatRoom}/messages/`)
             .then((response) => response.json())
             .then((data) => setMessages(data));
     }
@@ -86,7 +87,7 @@ export default function Main() {
             },
             body: JSON.stringify(data) 
           });
-          grabMessages(currentChatRoom)
+          grabMessages()
           return response.json()
         }
     
