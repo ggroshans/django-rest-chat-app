@@ -1,39 +1,57 @@
-import "./ChatRoomList.css"
-import React from 'react';
-import ChatRoom from './ChatRoom/ChatRoom';
-import { v4 as uuidv4 } from 'uuid';
-import { useState, useEffect } from 'react';
+import "./ChatRoomList.css";
+import React from "react";
+import ChatRoom from "./ChatRoom/ChatRoom";
+import { v4 as uuidv4 } from "uuid";
+import { useState, useEffect } from "react";
 
 export default function ChatRoomList(props) {
-    const [addChatFlag, setAddChatFlag] = useState(false)
+    const [addChatFlag, setAddChatFlag] = useState(false);
+    const [newChatName, setNewChatName] = useState("");
 
-    function handleClick(e) {
-        setAddChatFlag(true)
+    function handleAddChat(e) {
+        setAddChatFlag(!addChatFlag);
+    }
+    function handleAddChatName() {
+        props.postChatRoom(newChatName);
     }
 
-    let html = "";
+    function handleChange(e) {
+        setNewChatName(e.target.value);
+    }
 
-    useEffect( () => {
-        console.log('firing')
-        if (addChatFlag) {
-            console.log('here')
-            html = '<input type="text">INPUT</input>'
-        } 
-        else {
-            console.log('there')
-            html = <button onClick={(e)=> handleClick(e)}> + Add Chat Room </button>
-            console.log("there", html)
-        }
-    }, [addChatFlag])
+    let html;
 
+    if (addChatFlag) {
+        html = (
+            <div>
+                <input
+                    onChange={(e) => handleChange(e)}
+                    value={newChatName}
+                    type="text"
+                />
+                <button onClick={(e) => handleAddChatName()}>Add Name</button>
+            </div>
+        );
+    } else {
+        html = (
+            <button onClick={(e) => handleAddChat(e)}> + Add Chat Room </button>
+        );
+    }
 
     return (
         <div className="chatroom-list-container">
             Chat Rooms:
-            {props.chatRooms.map(chatRoom => {
-                console.log('chatRoom', chatRoom)
-                return <ChatRoom {...chatRoom} key={uuidv4()} changeChatRoom={props.changeChatRoom} />
+            {html}
+            {props.chatRooms.map((chatRoom) => {
+                console.log("chatRoom", chatRoom);
+                return (
+                    <ChatRoom
+                        {...chatRoom}
+                        key={uuidv4()}
+                        changeChatRoom={props.changeChatRoom}
+                    />
+                );
             })}
         </div>
-    )
+    );
 }

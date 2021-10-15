@@ -109,7 +109,7 @@ export default function Main() {
 
     return (
         <div className="main-container">
-            <ChatRoomList chatRooms={chatRooms} changeChatRoom={changeChatRoom}/>
+            <ChatRoomList chatRooms={chatRooms} changeChatRoom={changeChatRoom} postChatRoom={postChatRoom}/>
             <MessageList messages={messages} grabMessages={grabMessages} postMessage={postMessage}/>
         </div>
     );
