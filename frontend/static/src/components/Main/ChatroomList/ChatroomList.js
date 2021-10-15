@@ -1,7 +1,8 @@
-import React from 'react'
-import ChatRoom from './ChatRoom/ChatRoom'
+import "./ChatRoomList.css"
+import React from 'react';
+import ChatRoom from './ChatRoom/ChatRoom';
 import { v4 as uuidv4 } from 'uuid';
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
 export default function ChatRoomList(props) {
     const [addChatFlag, setAddChatFlag] = useState(false)
@@ -27,9 +28,8 @@ export default function ChatRoomList(props) {
 
 
     return (
-        <div>
+        <div className="chatroom-list-container">
             Chat Rooms:
-            {console.log("HTML",html)}
             {props.chatRooms.map(chatRoom => {
                 console.log('chatRoom', chatRoom)
                 return <ChatRoom {...chatRoom} key={uuidv4()} changeChatRoom={props.changeChatRoom} />

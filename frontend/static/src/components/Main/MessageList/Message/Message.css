@@ -1,8 +1,8 @@
 .message-bubble {
     position: relative;
-    background: #ffffff;
+    background: white;
     border-radius: 0.4em;
-    color: black;
+	color: black;
     margin: 1rem;
     padding: 1rem;
     width: 50%;

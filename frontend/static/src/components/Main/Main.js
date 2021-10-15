@@ -1,6 +1,6 @@
 import "./Main.css"
 import React from "react";
-import ChatRoomList from "./ChatRoomList/ChatroomList";
+import ChatRoomList from "./ChatRoomList/ChatRoomList";
 import MessageList from "./MessageList/MessageList";
 import { useState, useEffect, useRef } from "react";
 
