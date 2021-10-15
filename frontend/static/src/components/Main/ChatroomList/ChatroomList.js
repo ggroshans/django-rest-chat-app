@@ -2,17 +2,19 @@ import "./ChatRoomList.css";
 import React from "react";
 import ChatRoom from "./ChatRoom/ChatRoom";
 import { v4 as uuidv4 } from "uuid";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function ChatRoomList(props) {
     const [addChatFlag, setAddChatFlag] = useState(false);
     const [newChatName, setNewChatName] = useState("");
 
     function handleAddChat(e) {
-        setAddChatFlag(!addChatFlag);
+        setAddChatFlag(true);
     }
     function handleAddChatName() {
         props.postChatRoom(newChatName);
+        setNewChatName("")
+        setAddChatFlag(false)
     }
 
     function handleChange(e) {
