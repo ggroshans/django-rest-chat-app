@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from "react";
 export default function Main() {
     const [chatRooms, setChatRooms] = useState([]);
     const [messages, setMessages] = useState([]);
-    const [currentChatRoom, setCurrentChatRoom] = useState([])
+    const [currentChatRoom, setCurrentChatRoom] = useState(0)
     const firstRender = useRef(true)
     
     useEffect(() => {
@@ -81,6 +81,23 @@ export default function Main() {
           grabChatRooms()
           return response.json()
         }
+
+    async function postMessage(message){
+        let data = {
+            room: currentChatRoom,
+            author: "username here",
+            body: message
+        }
+        const response = await fetch(`/api/chatrooms/${currentChatRoom}/messages/`, {
+            method: 'POST', 
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data) 
+          });
+          grabMessages(currentChatRoom)
+          return response.json()
+        }
     
     
 
@@ -93,7 +110,7 @@ export default function Main() {
     return (
         <div className="main-container">
             <ChatRoomList chatRooms={chatRooms} changeChatRoom={changeChatRoom}/>
-            <MessageList messages={messages} grabMessages={grabMessages}/>
+            <MessageList messages={messages} grabMessages={grabMessages} postMessage={postMessage}/>
         </div>
     );
 }
