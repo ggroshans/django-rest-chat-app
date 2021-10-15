@@ -2,18 +2,31 @@ import "./Main.css"
 import React from "react";
 import ChatRoomList from "./ChatRoomList/ChatroomList";
 import MessageList from "./MessageList/MessageList";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Main() {
     const [chatRooms, setChatRooms] = useState([]);
     const [messages, setMessages] = useState([]);
-
-
+    const [currentChatRoom, setCurrentChatRoom] = useState([])
+    const firstRender = useRef(true)
+    
     useEffect(() => {
         grabChatRooms()
-        // grabSpecificChatRoom(4)
-        grabMessages(5)
+
+        console.log(messages)
     }, [])
+
+    useEffect(() => {
+        if(firstRender.current){
+            firstRender.current = false;
+        }
+        else {
+            grabMessages(currentChatRoom)
+        }
+
+
+    }, [currentChatRoom])
+    
 
 
     async function grabChatRooms() {
@@ -72,8 +85,9 @@ export default function Main() {
     
 
     function changeChatRoom(id) {
-        console.log(id)
-        grabMessages(id)
+        setCurrentChatRoom(id)
+
+  
     }
 
     return (
