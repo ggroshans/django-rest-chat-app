@@ -1,3 +1,4 @@
+import "./MessageList.css"
 import React from 'react'
 import Message from "./Message/Message"
 import { v4 as uuidv4 } from 'uuid';
@@ -18,7 +19,7 @@ function handleSubmit(e) {
 }
 
     return (
-        <div>
+        <div className="message-list-container">
             {props.messages.map(message => {
                 return <Message key={uuidv4()} {...message} deleteMessage={props.deleteMessage} updateMessage={props.updateMessage}/>
             })}
