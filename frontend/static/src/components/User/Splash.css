@@ -1,5 +1,7 @@
 
 .splash-container {
+    position: relative;
+    top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -8,6 +10,7 @@
     height: 70vh;
     width: 35rem;
     font-family:Noto Sans Mono ;
+    overflow: auto;
 }
 
 .diskord-green {
@@ -20,6 +23,7 @@
 
 .splash-container button {
     font-weight: 900;
+    width: 8rem;
 }
 
 .splash-container button:hover {

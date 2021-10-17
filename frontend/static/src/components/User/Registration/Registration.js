@@ -44,7 +44,7 @@ export default function Registration(props) {
         <div className="registration-form-container">
             <button className="registration-back-btn" onClick={handleBackBtn}><BiArrowBack/></button>
             <form className="registration-form" onSubmit={(e) => handleSubmit(e)}>
-                <div className="form-group text-left mb-3 mt-5">
+                <div className="form-group text-left mb-3 mt-1">
                     <label className="form-label" htmlFor="username">Username:</label>
                     <input
                         type="text"
