@@ -1,22 +1,19 @@
 import React from "react";
 import { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 
 export default function Registration(props) {
     const [formData, setFormData] = useState({
-        username: "",
-        email: "",
-        password1: "",
-        password2: "",
+        'username': "",
+        'email': "",
+        'password1': "",
+        'password2': "",
     });
 
     function handleChange(e) {
-        const modifiedData = {
-            ...formData,
-        };
-        modifiedData[e.target.id] = e.target.value;
-        setFormData(modifiedData);
-        console.log(formData.username);
+        setFormData(prevState => ({...prevState, 
+            [e.target.id]: e.target.value}));
+        console.log('FORMDATA', formData);
     }
     let passwordWarning;
     if (formData.password1 !== formData.password2){
@@ -26,8 +23,9 @@ export default function Registration(props) {
     }
 
     function handleSubmit(e) {
+        console.log(formData)
         e.preventDefault()
-        if (formData.password1 === formData.password2){
+        if (formData.password1 === formData.password2 && formData.password1 !== ""){
             props.handleRegistration(formData); 
         }
 
@@ -50,7 +48,7 @@ export default function Registration(props) {
                 <div className="form-group text-left mb-3 mt-5">
                     <label htmlFor="email">Email:</label>
                     <input
-                        type="text"
+                        type="email"
                         id="email"
                         value={formData.email}
                         onChange={(e) => handleChange(e)}
@@ -60,7 +58,7 @@ export default function Registration(props) {
                 <div className="form-group text-left mb-3 mt-5">
                     <label htmlFor="Password">Password:</label>
                     <input
-                        type="text"
+                        type="password"
                         id="password1"
                         value={formData.password1}
                         onChange={(e) => handleChange(e)}
@@ -70,7 +68,7 @@ export default function Registration(props) {
                 <div className="form-group text-left mb-3 mt-5">
                     <label htmlFor="password">Password:</label>
                     <input
-                        type="text"
+                        type="password"
                         id="password2"
                         value={formData.password2}
                         onChange={(e) => handleChange(e)}
