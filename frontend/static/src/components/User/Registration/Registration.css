@@ -20,3 +20,16 @@
     font-weight: 900;
     width: 50%;
 }
+
+.registration-back-btn {
+    position: relative;
+    top: 40px;
+    right: 115px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 1.5rem;
+}
+.registration-back-btn:hover {
+    color: green;
+}

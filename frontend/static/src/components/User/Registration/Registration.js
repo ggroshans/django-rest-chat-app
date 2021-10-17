@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import './Registration.css'
+import { BiArrowBack } from 'react-icons/bi';
 
 export default function Registration(props) {
     const [formData, setFormData] = useState({
@@ -35,8 +36,13 @@ export default function Registration(props) {
         }
     }
 
+    function handleBackBtn() {
+        props.changeStatus('splash');
+    }
+
     return (
         <div className="registration-form-container">
+            <button className="registration-back-btn" onClick={handleBackBtn}><BiArrowBack/></button>
             <form className="registration-form" onSubmit={(e) => handleSubmit(e)}>
                 <div className="form-group text-left mb-3 mt-5">
                     <label className="form-label" htmlFor="username">Username:</label>

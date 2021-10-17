@@ -59,7 +59,7 @@ function App() {
             body = <Splash changeStatus={changeStatus} />;
             break;
         case "register":
-            body = <Registration handleRegistration={handleRegistration} />;
+            body = <Registration handleRegistration={handleRegistration} changeStatus={changeStatus}/>;
             break;
         case "login":
             body = <Login handleLogin={handleLogin} />;
