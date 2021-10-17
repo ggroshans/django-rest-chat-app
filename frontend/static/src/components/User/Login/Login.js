@@ -1,5 +1,7 @@
 import React from "react";
-import { useState } from 'react';
+import "./Login.css";
+import { BiArrowBack } from "react-icons/bi";
+import { useState } from "react";
 
 export default function Login(props) {
     const [formData, setFormData] = useState({
@@ -21,30 +23,48 @@ export default function Login(props) {
         props.handleLogin(formData);
     }
 
+    function handleBackBtn() {
+
+    }
+
     return (
-        <div>
+        <div className="login-container">
+            <button className="login-back-btn" onClick={handleBackBtn}>
+                <BiArrowBack />
+            </button>
             <form onSubmit={handleSubmit}>
-                <div className="form-group text-left mb-3 mt-5">
-                    <label className="text-left" htmlFor="username">Username:</label>
+                <div className="form-group text-left mb-3">
+                    <label className="form-label" htmlFor="username">
+                        Username:
+                    </label>
                     <input
                         type="text"
                         id="username"
                         value={formData.username}
                         onChange={(e) => handleChange(e)}
                         placeholder="Enter Username"
+                        className="form-control"
                     />
                 </div>
-                <div className="form-group text-left mb-3 mt-5">
-                    <label htmlFor="Password">Password:</label>
+                <div className="form-group text-left mb-3 mt-2">
+                    <label className="form-label" htmlFor="Password">
+                        Password:
+                    </label>
                     <input
                         type="password"
                         id="password"
                         value={formData.password}
                         onChange={(e) => handleChange(e)}
                         placeholder="Enter Password"
+                        className="form-control"
                     />
                 </div>
-                <button type="submit" className="btn btn-success">Login</button>
+                <button
+                    type="submit"
+                    className="btn btn-success submit-login-btn"
+                >
+                    Login
+                </button>
             </form>
         </div>
     );
