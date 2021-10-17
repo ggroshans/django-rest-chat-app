@@ -1,5 +1,6 @@
 import React from 'react'
-import { AiOutlineCloseSquare } from "react-icons/ai"
+import "./Chatroom.css"
+import { AiOutlineClose } from "react-icons/ai"
 
 export default function ChatRoom(props) {
 
@@ -8,8 +9,9 @@ export default function ChatRoom(props) {
     }
 
     return (
-        <div>
-            <button value={props.id} onClick={(e) => props.changeChatRoom(e.target.value)}>{props.name}</button><button value={props.id} onClick={(e) => handleClick(e)}><AiOutlineCloseSquare/></button>
+        <div className="chatroom-container">
+            <button className="btn btn-outline-success chatroom-btn" value={props.id} onClick={(e) => props.changeChatRoom(e.target.value)}>#{props.name}</button>
+            <button className="chatroom-close-btn" value={props.id} onClick={(e) => handleClick(e)}><AiOutlineClose/></button>
         </div>
     )
 }

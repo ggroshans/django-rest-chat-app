@@ -1,0 +1,24 @@
+
+
+.chatroom-btn {
+    width: 12rem;
+    overflow: hidden;
+    border: none;
+    text-align: left;
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
+}
+
+.chatroom-close-btn {
+    position: relative;
+    right: 19px;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    color: rgb(95, 167, 95);
+}
+
+.chatroom-close-btn:hover {
+    color: white;
+} 
+

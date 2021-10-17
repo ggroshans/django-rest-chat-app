@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from .serializers import RoomSerializer, MessageSerializer
 from .models import Room, Message
+from django.contrib.auth.models import User
 
 
 # Create your views here.

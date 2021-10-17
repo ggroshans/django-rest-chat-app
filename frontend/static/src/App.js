@@ -72,7 +72,7 @@ function App() {
     return (
         <div className="App">
             <Header changeStatus={changeStatus}/>
-            {body}
+            <Main />
             <Footer />
         </div>
     );

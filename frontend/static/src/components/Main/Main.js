@@ -1,5 +1,6 @@
 import "./Main.css";
 import React from "react";
+import Cookies from "js-cookie";
 import ChatRoomList from "./ChatRoomList/ChatRoomList";
 import MessageList from "./MessageList/MessageList";
 import { useState, useEffect, useRef } from "react";
@@ -30,33 +31,24 @@ export default function Main() {
     }
 
     async function deleteMessage(id) {
-        await fetch(`/api/chatrooms/${currentChatRoom}/messages/${id}/`,
-            {
-                method: "DELETE",
-            }
-        );
+        await fetch(`/api/chatrooms/${currentChatRoom}/messages/${id}/`, {
+            method: "DELETE",
+            headers: {
+                "X-CSRFToken": Cookies.get("csrftoken"),
+            },
+        });
         grabMessages();
     }
 
     async function deleteChatRoom(id) {
-        await fetch(`/api/chatrooms/${id}/`,
-            {
-                method: "DELETE",
-            }
-        );
+        await fetch(`/api/chatrooms/${id}/`, {
+            method: "DELETE",
+            headers: {
+                "X-CSRFToken": Cookies.get("csrftoken"),
+            },
+        });
         grabChatRooms();
     }
-
-    // async function renameChatRoom(id, nameChange) {
-    //     const requestOptions = {
-    //         method: 'PUT',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify({ name: nameChange })
-    //     };
-    //     await fetch(`/api/chatrooms/${id}`, requestOptions)
-    //         .then(response => response.json())
-    //         .then(data => console.log(data))
-    // }
 
     async function grabMessages() {
         await fetch(`/api/chatrooms/${currentChatRoom}/messages/`)
@@ -72,6 +64,7 @@ export default function Main() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "X-CSRFToken": Cookies.get("csrftoken"),
             },
             body: JSON.stringify(data),
         });
@@ -91,6 +84,7 @@ export default function Main() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "X-CSRFToken": Cookies.get("csrftoken"),
                 },
                 body: JSON.stringify(data),
             }
@@ -102,14 +96,17 @@ export default function Main() {
     async function updateMessage(id, obj) {
         const requestOptions = {
             method: "PUT",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookies.get("csrftoken"),
+            },
             body: JSON.stringify(obj),
         };
         const response = await fetch(
             `/api/chatrooms/${currentChatRoom}/messages/${id}/`,
             requestOptions
         );
-        grabMessages()
+        grabMessages();
         return response.json();
     }
 
