@@ -1,4 +1,3 @@
-
 .registration-form-container {
     height: 70vh;
 }
@@ -12,11 +11,11 @@
     width: 100%;
     display: inline-block;
     text-align: left;
-    font-family: 'Noto Sans Mono', monospace;
+    font-family: "Noto Sans Mono", monospace;
 }
 
 .registration-form button {
-    font-family: 'Noto Sans Mono', monospace;
+    font-family: "Noto Sans Mono", monospace;
     font-weight: 900;
     width: 50%;
 }
@@ -30,5 +29,11 @@
     font-size: 1.5rem;
 }
 .registration-back-btn:hover {
+    color: green;
+}
+
+.registration-submit-btn:hover {
+    background-color: white;
+    border: 1px solid #04aa6d;
     color: green;
 }

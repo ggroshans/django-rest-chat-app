@@ -44,7 +44,7 @@ export default function Login(props) {
                         placeholder="Enter Password"
                     />
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit" className="btn btn-success">Login</button>
             </form>
         </div>
     );

@@ -89,7 +89,7 @@ export default function Registration(props) {
                     />
                     {passwordWarning}
                 </div>
-                <button type="submit" className="btn btn-success mt-3">Register</button>
+                <button type="submit" className="btn btn-success mt-3 registration-submit-btn">Register</button>
             </form>
         </div>
     );
