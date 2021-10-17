@@ -1,15 +1,18 @@
-import React from 'react'
+import React from "react";
 
 export default function Splash(props) {
-
     function handleClick(e) {
-        props.changeSplash(e.target.value)
+        props.changeStatus(e.target.value);
     }
 
     return (
         <div>
-            <button value="register" onClick={handleClick}>Register</button>
-            <button value="login" onClick={handleClick}>Login</button>
+            <button value="register" onClick={handleClick}>
+                Register
+            </button>
+            <button value="login" onClick={handleClick}>
+                Login
+            </button>
         </div>
-    )
+    );
 }

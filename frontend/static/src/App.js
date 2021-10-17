@@ -1,19 +1,17 @@
-import Cookies from 'js-cookie';
+import Cookies, { set } from "js-cookie";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import Registration from "./components/User/Registration/Registration";
-import Splash from "./components/User/Splash"
-import Login from "./components/User/Login/Login"
-import { useState } from 'react';
-
+import Splash from "./components/User/Splash";
+import Login from "./components/User/Login/Login";
+import { useState } from "react";
 
 function App() {
+    const [userStatus, setUserStatus] = useState("splash");
 
-const [userSplash, setUserSplash] = useState('splash')
-
-  async function handleRegistration(userData) {
+    async function handleRegistration(userData) {
         const options = {
             method: "POST",
             headers: {
@@ -21,42 +19,66 @@ const [userSplash, setUserSplash] = useState('splash')
                 "X-CSRFToken": Cookies.get("csrftoken"),
             },
             body: JSON.stringify(userData),
-        }
-        const response = await fetch("/rest-auth/registration/", options)
+        };
+        const response = await fetch("/rest-auth/registration/", options);
         try {
             const data = await response.json();
-            console.log(data)
+            console.log(data);
             Cookies.set(`Authorization`, `Token ${data.key}`);
         } catch (error) {
-          console.error(error)
+            console.error(error);
         }
     }
 
-    function changeSplash(val) {
-      setUserSplash(val);
+    async function handleLogin(userData) {
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookies.get("csrftoken"),
+            },
+            body: JSON.stringify(userData),
+        };
+        const response = await fetch("/rest-auth/login/", options);
+        if (response.ok === true) {
+            const data = await response.json();
+            Cookies.set(`Authorization`, `Token ${data.key}`);
+            setUserStatus("approved");
+        } else {
+            console.error(response.statusText);
+        }
     }
-    console.log(userSplash)
+
+    function changeStatus(val) {
+        setUserStatus(val);
+    }
+
+    // if (isLoggedOn) {
+    //   setUserSplash('chat');
+    // }
+
+    console.log(userStatus);
 
     let body;
-    switch (userSplash) {
-      case 'splash':
-        body = <Splash changeSplash={changeSplash}/>
-        break;
-      case 'register':
-        body = <Registration handleRegistration={handleRegistration} />
-        break;
-      case 'login':
-        body = <Login />
-        break;
-      case 'chat':
-        body = <Main />
-        break;
+    switch (userStatus) {
+        case "splash":
+            body = <Splash changeStatus={changeStatus} />;
+            break;
+        case "register":
+            body = <Registration handleRegistration={handleRegistration} />;
+            break;
+        case "login":
+            body = <Login handleLogin={handleLogin} />;
+            break;
+        case "approved":
+            body = <Main />;
+            break;
     }
 
     return (
         <div className="App">
             <Header />
-            {body}  
+            {body}
             <Footer />
         </div>
     );

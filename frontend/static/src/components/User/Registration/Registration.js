@@ -1,35 +1,37 @@
 import React from "react";
 import { useState } from "react";
 
-
 export default function Registration(props) {
     const [formData, setFormData] = useState({
-        'username': "",
-        'email': "",
-        'password1': "",
-        'password2': "",
+        username: "",
+        email: "",
+        password1: "",
+        password2: "",
     });
 
     function handleChange(e) {
-        setFormData(prevState => ({...prevState, 
-            [e.target.id]: e.target.value}));
-        console.log('FORMDATA', formData);
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.id]: e.target.value,
+        }));
+        console.log("FORMDATA", formData);
     }
     let passwordWarning;
-    if (formData.password1 !== formData.password2){
-        passwordWarning = <p className='text-danger'>Passwords do not match</p>
+    if (formData.password1 !== formData.password2) {
+        passwordWarning = <p className="text-danger">Passwords do not match</p>;
     } else {
-        passwordWarning = ""
+        passwordWarning = "";
     }
 
     function handleSubmit(e) {
-        console.log(formData)
-        e.preventDefault()
-        if (formData.password1 === formData.password2 && formData.password1 !== ""){
-            props.handleRegistration(formData); 
+        console.log(formData);
+        e.preventDefault();
+        if (
+            formData.password1 === formData.password2 &&
+            formData.password1 !== ""
+        ) {
+            props.handleRegistration(formData);
         }
-
-
     }
 
     return (
