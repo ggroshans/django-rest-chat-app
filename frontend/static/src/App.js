@@ -62,7 +62,7 @@ function App() {
             body = <Registration handleRegistration={handleRegistration} changeStatus={changeStatus}/>;
             break;
         case "login":
-            body = <Login handleLogin={handleLogin} />;
+            body = <Login handleLogin={handleLogin} changeStatus={changeStatus} />;
             break;
         case "approved":
             body = <Main />;

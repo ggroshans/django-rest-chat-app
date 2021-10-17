@@ -24,7 +24,7 @@ export default function Login(props) {
     }
 
     function handleBackBtn() {
-
+        props.changeStatus('splash')
     }
 
     return (
