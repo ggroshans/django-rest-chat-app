@@ -1,0 +1,29 @@
+
+.splash-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 auto;
+    height: 70vh;
+    width: 35rem;
+    font-family:Noto Sans Mono ;
+}
+
+.diskord-green {
+    color: #28A746;
+}
+
+.splash-container h1 {
+    font-size: 3rem;
+}
+
+.splash-container button {
+    font-weight: 900;
+}
+
+.splash-container button:hover {
+    background-color: white;
+    border: 1px solid #04AA6D;
+    color: green;
+}

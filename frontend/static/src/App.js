@@ -53,12 +53,6 @@ function App() {
         setUserStatus(val);
     }
 
-    // if (isLoggedOn) {
-    //   setUserSplash('chat');
-    // }
-
-    console.log(userStatus);
-
     let body;
     switch (userStatus) {
         case "splash":
@@ -77,7 +71,7 @@ function App() {
 
     return (
         <div className="App">
-            <Header />
+            <Header changeStatus={changeStatus}/>
             {body}
             <Footer />
         </div>
