@@ -25,7 +25,7 @@ export default function Login(props) {
         <div>
             <form onSubmit={handleSubmit}>
                 <div className="form-group text-left mb-3 mt-5">
-                    <label htmlFor="username">Username:</label>
+                    <label className="text-left" htmlFor="username">Username:</label>
                     <input
                         type="text"
                         id="username"
