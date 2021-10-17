@@ -24,10 +24,18 @@
 .splash-container button {
     font-weight: 900;
     width: 8rem;
+    margin: 0.25rem 0rem;
 }
 
 .splash-container button:hover {
     background-color: white;
     border: 1px solid #04AA6D;
     color: green;
+}
+
+.splash-btn-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 10px;
 }
