@@ -9,7 +9,7 @@
     margin: 0 auto;
     height: 70vh;
     width: 35rem;
-    font-family:Noto Sans Mono ;
+    font-family: 'Noto Sans Mono', monospace;
     overflow: auto;
 }
 

@@ -3,17 +3,16 @@
 .login-container {
     width: 15rem;
     margin: 0 auto;
+    font-family: 'Noto Sans Mono', monospace;
 }
 
 .login-container label {
     display: inline-block;
     width: 100%;
     text-align: left;
-    font-family: Noto Sans Mono;
 }
 
 .submit-login-btn {
-    font-family: Noto Sans Mono;
     font-weight: 900;
     width: 6rem;
     margin-top: 0.5rem;
