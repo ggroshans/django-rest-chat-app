@@ -10,8 +10,8 @@ export default function ChatRoom(props) {
 
     return (
         <div className="chatroom-container">
-            <button className="btn btn-outline-success chatroom-btn" value={props.id} onClick={(e) => props.changeChatRoom(e.target.value)}>#{props.name}</button>
-            <button className="chatroom-close-btn" value={props.id} onClick={(e) => handleClick(e)}><AiOutlineClose/></button>
+            <button className="btn btn-outline-success chatroom-btn" value={props.id} onClick={(e) => props.changeChatRoom(e.target.value)}>#{props.name}            <button className="chatroom-close-btn" value={props.id} onClick={(e) => handleClick(e)}><AiOutlineClose/></button></button>
+
         </div>
     )
 }

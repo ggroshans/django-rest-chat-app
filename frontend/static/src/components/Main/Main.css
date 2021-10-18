@@ -3,5 +3,5 @@
     display: flex;
     justify-content: space-between;
     height: 70vh;
-    overflow: scroll;
+    background-color: #36393F;
 }

@@ -4,19 +4,23 @@
     font-family: 'Noto Sans Mono', monospace;
     font-weight: 700;
     text-align: left;
+    margin-top: 2.5rem;
 }
 
 .chatroom-list-container {
     display: flex;
+    background-color: #2F3136;
     flex-direction: column;
     align-items: flex-start;
     padding: 0;
     width: 25vw;
+    padding-left: 3rem;
     position: sticky;
     top: 0px;
-    margin-top: 1rem;
-    margin-left: 5vw;
-
+    border-top: 15px solid #36393F;
+    border-bottom: 15px solid #36393F;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
 }
 
 .chatroom-list {
@@ -50,8 +54,9 @@
     border-color:white;
 }
 
-.create-chatroom-container {
+.create-chatroom-container form {
     display: flex;
+    margin-top: 1rem;
 }
 
 .create-chat-input {

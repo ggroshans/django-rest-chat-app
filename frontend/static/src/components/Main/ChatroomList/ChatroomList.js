@@ -27,13 +27,15 @@ export default function ChatRoomList(props) {
     if (addChatFlag) {
         html = (
             <div className='create-chatroom-container'>
-                <input
+            <form action="">
+            <input
                     onChange={(e) => handleChange(e)}
                     value={newChatName}
                     type="text"
                     className='form-control create-chat-input'
                 />
-                <button onClick={(e) => handleAddChatName()} className="btn btn-success-outline create-chat-btn">Create</button>
+                <button onClick={(e) => handleAddChatName()} type='submit' className="btn btn-success-outline create-chat-btn">Create</button>
+            </form>
             </div>
         );
     } else {

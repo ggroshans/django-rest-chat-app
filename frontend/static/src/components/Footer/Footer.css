@@ -3,3 +3,10 @@
     height: 5vh;
     
 }
+
+.footer-copyright {
+    font-size: 0.75rem;
+    color: gray;
+    position: relative;
+    top: 10px;
+}

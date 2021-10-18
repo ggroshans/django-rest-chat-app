@@ -1,41 +1,39 @@
-.message-bubble {
+.message-bubble, .message-bubble-editing {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	align-items: center;
     position: relative;
-    background: white;
+    background: transparent;
     border-radius: 0.4em;
-	color: black;
-    margin: 1rem;
+	color: white;
+	margin: 0.5rem 0.5rem 0.5rem 0rem;
     padding: 1rem;
-    width: 50%;
+    width: 65vw;
+	text-align: left;
+	border-radius: 0;
 }
 
-.message-bubble:after {
-	content: '';
-	position: absolute;
-	right: 0;
-	top: 50%;
-	width: 0;
-	height: 0;
-	border: 10px solid transparent;
-	border-left-color: #ffffff;
-	border-right: 0;
-	margin-top: -10px;
-	margin-right: -10px;
+.message-bubble:hover, .message-bubble-editing:hover {
+    background: #2F3136;
 }
 
-.message-bubble input[type='textarea'] {
-	border: 1px lightgray dashed;
-	height: 35px;
+.message-bubble-editing {
+	background-color: #2F3136;
 }
 
-.message-bubble input[type='textarea']:focus-visible{
-	border: 1px solid lightgray;
-	box-shadow: 0.1px 0.4px 1px 1px lightgray, -0.1em 0 .4em lightgray;
-	height: 35px;
-	outline: none;
-}
 
+.message-bubble input[type='textarea'], .message-bubble-editing input[type='textarea'] {
+	border: none;
+	width: 90%;
+	background-color: transparent;
+	color: white;
+}
 
 .message-icon-container {
+	position: relative;
+	bottom: 10px;
+	right: 7.5px;
 	display: flex;
 	justify-content: flex-end;
 }
@@ -43,11 +41,29 @@
 .message-icon-container button {
 	height: 20px;
 	width: 20px;
+	font-size: 1.05rem;
 	background-color: transparent;
 	border: none;
+	color:gray;
 }
 
-.message-icon-container button:hover {
-	color: #91171f;
+.message-submit-edit-btn:hover {
+    color: greenyellow;
 }
 
+.message-edit-btn:hover {
+    color: goldenrod;
+}
+
+.message-close-btn:hover {
+    color: #91171f;
+}
+
+.message-content-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.message-content-author {
+	color: goldenrod;
+}

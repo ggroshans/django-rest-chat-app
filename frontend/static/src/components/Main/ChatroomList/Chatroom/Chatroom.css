@@ -1,17 +1,19 @@
 
 
 .chatroom-btn {
+    display: flex;
+    justify-content: space-between;
     width: 13rem;
     overflow: hidden;
     border: none;
     text-align: left;
-    padding-top: 0.15rem;
-    padding-bottom: 0.15rem;
+    padding: 0.15rem 0.5rem;
+    font-weight: 600;
 }
 
 .chatroom-close-btn {
     position: relative;
-    right: 19px;
+    bottom: 3px;
     border: none;
     background-color: transparent;
     padding: 0;

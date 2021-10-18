@@ -75,7 +75,7 @@ export default function Main() {
     async function postMessage(message) {
         let data = {
             room: currentChatRoom,
-            author: "username here",
+            author: "Username",
             body: message,
         };
         const response = await fetch(
