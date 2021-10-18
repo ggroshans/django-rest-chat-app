@@ -1,4 +1,35 @@
 
 .message-list-container {
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+    margin-right: 5vw;
+    width: 65vw;
+}
+.new-message-container form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.submit-message-btn {
+    background-color: transparent;
+    color: #24AB6D;
+    border: 1px solid #24AB6D;
+    width: 5rem;
+    height: 3.75rem;
+    padding: 0.1rem;
+    margin: 0rem 0rem 0rem 0.5rem;
+}
+.submit-message-btn:hover {
+    background-color: transparent;
+    border-color: white;
+}
+
+.enter-message-input {
+    height: 4rem;
+    width: 50vw;
 }

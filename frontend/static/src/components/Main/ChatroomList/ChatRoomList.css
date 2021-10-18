@@ -3,6 +3,7 @@
 .chatroom-list-header h2{
     font-family: 'Noto Sans Mono', monospace;
     font-weight: 700;
+    text-align: left;
 }
 
 .chatroom-list-container {
@@ -10,11 +11,12 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0;
-    width: 25rem;
+    width: 25vw;
     position: sticky;
     top: 0px;
     margin-top: 1rem;
-    margin-left: 3rem;
+    margin-left: 5vw;
+
 }
 
 .chatroom-list {
@@ -50,4 +52,9 @@
 
 .create-chatroom-container {
     display: flex;
+}
+
+.create-chat-input {
+    width: 8rem;
+    height: 2rem;
 }

@@ -31,6 +31,7 @@ export default function ChatRoomList(props) {
                     onChange={(e) => handleChange(e)}
                     value={newChatName}
                     type="text"
+                    className='form-control create-chat-input'
                 />
                 <button onClick={(e) => handleAddChatName()} className="btn btn-success-outline create-chat-btn">Create</button>
             </div>
