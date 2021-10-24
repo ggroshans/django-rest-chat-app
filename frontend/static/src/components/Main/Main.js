@@ -75,7 +75,7 @@ export default function Main() {
     async function postMessage(message) {
         let data = {
             room: currentChatRoom,
-            author: "Username",
+            user: "Username",
             body: message,
         };
         const response = await fetch(
@@ -88,9 +88,11 @@ export default function Main() {
                 },
                 body: JSON.stringify(data),
             }
+            
         );
         grabMessages();
-        return response.json();
+        const responseData = await response.json()
+        console.log(responseData.username);
     }
 
     async function updateMessage(id, obj) {

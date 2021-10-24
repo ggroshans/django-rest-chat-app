@@ -6,10 +6,24 @@ import Footer from "./components/Footer/Footer";
 import Registration from "./components/User/Registration/Registration";
 import Splash from "./components/User/Splash";
 import Login from "./components/User/Login/Login";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
     const [userStatus, setUserStatus] = useState("splash");
+    const [isAuth, setIsAuth] = useState(false);
+
+    useEffect( ()=> {
+        const checkAuth = async () => {
+            const response = fetch('/rest-auth/user/');
+            if (response.ok === false) {
+                setUserStatus("splash")
+            }
+            else {
+                setUserStatus("approved")
+            }
+        }
+        checkAuth();
+    }, [])
 
     async function handleRegistration(userData) {
         const options = {
@@ -44,6 +58,7 @@ function App() {
             const data = await response.json();
             Cookies.set(`Authorization`, `Token ${data.key}`);
             setUserStatus("approved");
+            
         } else {
             console.error(response.statusText);
         }
@@ -62,16 +77,18 @@ function App() {
             body = <Registration handleRegistration={handleRegistration} changeStatus={changeStatus}/>;
             break;
         case "login":
-            body = <Login handleLogin={handleLogin} changeStatus={changeStatus} />;
+            body = <Login handleLogin={handleLogin} changeStatus={changeStatus} isAuth={isAuth}/>;
             break;
         case "approved":
             body = <Main />;
             break;
     }
 
+    
+
     return (
         <div className="App">
-            <Header changeStatus={changeStatus}/>
+            <Header changeStatus={changeStatus} userStatus={userStatus}/>
             {body}
             <Footer />
         </div>

@@ -24,7 +24,7 @@ class MessageListAPIView(generics.ListCreateAPIView):
     
     def perform_create(self,serializer):
         room_instance = get_object_or_404(Room, id=self.kwargs['chatroom'])
-        serializer.save(room=room_instance)
+        serializer.save(room=room_instance, user=self.request.user)
 
 class MessageDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Message.objects.all()

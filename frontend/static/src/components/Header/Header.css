@@ -1,10 +1,33 @@
 
-.header {
+.header-container {
     overflow: hidden;
     height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.header-logout-btn {
+    position: relative;
+    left: 40vw;
+    bottom: 15vh;
+    font-family: 'Noto Sans Mono', monospace;
+    margin: 0.5rem 0;
+    background-color: transparent;
+    color: #24AB6D;
+    border: none;
+    width: 10rem;
+    height: 4vh;
+    font-weight: 600;
+}
+
+.header-logout-btn:hover {
+    color: white;
 }
 
 .header-img {
-    height: 18vh;
+    height: 14vh;
     cursor:pointer;
 }

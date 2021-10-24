@@ -55,7 +55,7 @@ export default function Message(props) {
                         className="form-control"
                     />
                     <span className="message-content-author">
-                        {props.author}:
+                        {props.username}:
                     </span>
                 </div>
             </>
@@ -81,7 +81,7 @@ export default function Message(props) {
 
                 <div className="message-content-container">
                     <span className="message-content-author">
-                        {props.author}:
+                        {props.username}:
                     </span>
                     <span className="message-content-body">{props.body}</span>
                 </div>
