@@ -75,7 +75,7 @@ export default function Main() {
     }
 
     async function postMessage(message) {
-        let data = {
+        let POSTdata = {
             room: currentChatRoom,
             user: "Username",
             body: message,
@@ -88,14 +88,19 @@ export default function Main() {
                     "Content-Type": "application/json",
                     "X-CSRFToken": Cookies.get("csrftoken"),
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify(POSTdata),
             }
             
         );
-        grabMessages();
-        const responseData = await response.json()
-        console.log(responseData.username);
+        // grabMessages();
+        const data = await response.json()
+        let updatedMessages = [...messages]
+        updatedMessages.push(data)
+        setMessages(updatedMessages)
     }
+
+ 
+
 
     async function updateMessage(id, obj) {
         const requestOptions = {
@@ -110,8 +115,15 @@ export default function Main() {
             `/api/chatrooms/${currentChatRoom}/messages/${id}/`,
             requestOptions
         );
-        grabMessages();
-        return response.json();
+        const data = await response.json();
+        editMessageOnState(data.id, data.message)
+    }
+
+    function editMessageOnState(id, message) {
+        let messageTarget = messages.findIndex(obj => obj.id === id)
+        let updatedArr = [...messages]
+        updatedArr[messageTarget].message = message;
+        setMessages(updatedArr);
     }
 
     function changeChatRoom(id) {
