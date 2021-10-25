@@ -8,12 +8,13 @@ import { useState, useEffect, useRef } from "react";
 export default function Main() {
     const [chatRooms, setChatRooms] = useState([]);
     const [messages, setMessages] = useState([]);
-    const [currentChatRoom, setCurrentChatRoom] = useState(0);
+    const [currentChatRoom, setCurrentChatRoom] = useState(null);
     const firstRender = useRef(true);
 
     useEffect(() => {
         grabChatRooms();
         console.log(messages);
+
     }, []);
 
     useEffect(() => {
@@ -23,6 +24,7 @@ export default function Main() {
             grabMessages(currentChatRoom);
         }
     }, [currentChatRoom]);
+
 
     async function grabChatRooms() {
         await fetch(`/api/chatrooms/`)
@@ -130,6 +132,7 @@ export default function Main() {
                 postMessage={postMessage}
                 deleteMessage={deleteMessage}
                 updateMessage={updateMessage}
+                currentChatRoom = {currentChatRoom}
             />
         </div>
     );

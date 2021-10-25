@@ -17,8 +17,15 @@ export default function MessageList(props) {
         setText("");
     }
 
+    let html
+    if (props.currentChatRoom === null) {
+        html = <h2 className="not-in-chatroom-heading">You are currently not in a chatroom</h2>
+    } 
+
+    console.log(props.currentChatRoom)
     return (
         <div className="message-list-container">
+            {html}
             {props.messages.map((message) => {
                 return (
                     <Message

@@ -14,7 +14,8 @@ function App() {
 
     useEffect( ()=> {
         const checkAuth = async () => {
-            const response = fetch('/rest-auth/user/');
+            const response = await fetch('/rest-auth/user/');
+            const data = await response.json()
             if (response.ok === false) {
                 setUserStatus("splash")
             }
@@ -23,7 +24,7 @@ function App() {
             }
         }
         checkAuth();
-    }, [])
+    }, [ ,isAuth])
 
     async function handleRegistration(userData) {
         const options = {
@@ -39,6 +40,7 @@ function App() {
             const data = await response.json();
             console.log(data);
             Cookies.set(`Authorization`, `Token ${data.key}`);
+            setUserStatus("approved");
         } catch (error) {
             console.error(error);
         }
@@ -67,6 +69,8 @@ function App() {
     function changeStatus(val) {
         setUserStatus(val);
     }
+
+    console.log("user status", userStatus)
 
     let body;
     switch (userStatus) {

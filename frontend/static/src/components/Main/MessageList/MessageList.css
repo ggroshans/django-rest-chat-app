@@ -37,3 +37,11 @@
     width: 55vw;
 }
 
+.not-in-chatroom-heading {
+    color: tomato;
+    position: relative;
+    bottom: 40vh;
+    left: 5vw;
+    font-size: 1.75rem;
+    font-family: "Noto Mono Sans", monospace;
+}
