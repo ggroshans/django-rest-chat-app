@@ -13,8 +13,6 @@ export default function Main() {
 
     useEffect(() => {
         grabChatRooms();
-        console.log(messages);
-
     }, []);
 
     useEffect(() => {
@@ -27,7 +25,7 @@ export default function Main() {
 
 
     async function grabChatRooms() {
-        await fetch(`/api/chatrooms/`)
+            await fetch(`/api/chatrooms/`)
             .then((response) => response.json())
             .then((data) => setChatRooms(data));
     }
@@ -53,13 +51,17 @@ export default function Main() {
     }
 
     async function grabMessages() {
+        if (currentChatRoom === undefined) {
+            setCurrentChatRoom(null)
+        } else {
         await fetch(`/api/chatrooms/${currentChatRoom}/messages/`)
             .then((response) => response.json())
             .then((data) => setMessages(data));
     }
+}
 
     async function postChatRoom(name) {
-        let data = {
+        let POSTdata = {
             name: name,
         };
         const response = await fetch(`/api/chatrooms/`, {
@@ -68,10 +70,12 @@ export default function Main() {
                 "Content-Type": "application/json",
                 "X-CSRFToken": Cookies.get("csrftoken"),
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(POSTdata),
         });
-        grabChatRooms();
-        return response.json();
+        const data = await response.json();
+        let updatedChatrooms = [...chatRooms]
+        updatedChatrooms.push(data)
+        setChatRooms(updatedChatrooms);
     }
 
     async function postMessage(message) {
@@ -92,15 +96,11 @@ export default function Main() {
             }
             
         );
-        // grabMessages();
         const data = await response.json()
         let updatedMessages = [...messages]
         updatedMessages.push(data)
         setMessages(updatedMessages)
     }
-
- 
-
 
     async function updateMessage(id, obj) {
         const requestOptions = {
@@ -116,13 +116,9 @@ export default function Main() {
             requestOptions
         );
         const data = await response.json();
-        editMessageOnState(data.id, data.message)
-    }
-
-    function editMessageOnState(id, message) {
-        let messageTarget = messages.findIndex(obj => obj.id === id)
+        let messageTarget = messages.findIndex(obj => obj.id === data.id)
         let updatedArr = [...messages]
-        updatedArr[messageTarget].message = message;
+        updatedArr[messageTarget].message = data.message;
         setMessages(updatedArr);
     }
 

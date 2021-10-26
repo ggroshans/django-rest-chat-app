@@ -9,7 +9,6 @@ export default function Message(props) {
     const [editMessageFlag, setEditMessageFlag] = useState(false);
 
     function handleCloseClick(e) {
-        console.log(e.currentTarget.value);
         props.deleteMessage(e.currentTarget.value);
     }
 
@@ -21,13 +20,11 @@ export default function Message(props) {
         setEditMessageFlag(false);
         let updatedObj = { ...props };
         updatedObj.body = updatedText;
-        console.log("AYYY", updatedObj);
         props.updateMessage(e.currentTarget.value, updatedObj);
     }
 
     function handleChange(e) {
         setUpdatedText(e.currentTarget.value);
-        console.log(e.currentTarget.value);
     }
 
     let htmlRendered;

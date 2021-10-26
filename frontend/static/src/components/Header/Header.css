@@ -13,7 +13,7 @@
     position: relative;
     left: 40vw;
     bottom: 15vh;
-    font-family: 'Noto Sans Mono', monospace;
+    font-family: 'Noto Mono Sans', monospace;
     margin: 0.5rem 0;
     background-color: transparent;
     color: #24AB6D;
@@ -25,6 +25,7 @@
 
 .header-logout-btn:hover {
     color: white;
+
 }
 
 .header-img {
