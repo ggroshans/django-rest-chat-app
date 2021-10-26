@@ -2,7 +2,7 @@ import "./MessageList.css";
 import React from "react";
 import Message from "./Message/Message";
 import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function MessageList(props) {
     const [text, setText] = useState("");
@@ -18,11 +18,17 @@ export default function MessageList(props) {
     }
 
     let html
-    if (props.currentChatRoom === null) {
-        html = <h2 className="not-in-chatroom-heading">You are currently not in a chatroom</h2>
-    } 
 
-    console.log(props.currentChatRoom)
+    console.log("CURR CR", props.currentChatRoom)
+
+    useEffect( () => {
+        if (props.currentChatRoom === null) {
+            console.log("Fired")
+            html = <h2 className="not-in-chatroom-heading">You are currently not in a chatroom</h2>
+        } 
+    }, [props.currentChatRoom])
+
+
     return (
         <div className="message-list-container">
             {html}

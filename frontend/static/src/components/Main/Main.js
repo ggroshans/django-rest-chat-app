@@ -37,7 +37,12 @@ export default function Main() {
                 "X-CSRFToken": Cookies.get("csrftoken"),
             },
         });
-        grabMessages();
+        
+        let updatedMessages = [...messages];
+        let index = updatedMessages.findIndex(message => message.id === id);
+        updatedMessages.splice(index, 1);
+        setMessages(updatedMessages)
+        setCurrentChatRoom(null)
     }
 
     async function deleteChatRoom(id) {
