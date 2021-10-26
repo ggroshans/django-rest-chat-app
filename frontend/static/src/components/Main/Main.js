@@ -52,7 +52,11 @@ export default function Main() {
                 "X-CSRFToken": Cookies.get("csrftoken"),
             },
         });
-        grabChatRooms();
+        let updatedChatRooms = [...chatRooms];
+        let index = updatedChatRooms.findIndex(chatroom => chatroom.id === id);
+        updatedChatRooms.splice(index, 1);
+        setChatRooms(updatedChatRooms)
+        setCurrentChatRoom(null)
     }
 
     async function grabMessages() {
