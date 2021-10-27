@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import ChatRoomList from "./ChatRoomList/ChatRoomList";
 import MessageList from "./MessageList/MessageList";
 import { useState, useEffect, useRef } from "react";
+import { MdSettingsInputAntenna } from "react-icons/md";
 
 export default function Main() {
     const [chatRooms, setChatRooms] = useState([]);
@@ -65,10 +66,9 @@ export default function Main() {
         } else {
         await fetch(`/api/chatrooms/${currentChatRoom}/messages/`)
             .then((response) => response.json())
-            .then((data) => setMessages(data));
+            .then((data) => setMessages([...data]));
     }
 }
-
     async function postChatRoom(name) {
         let POSTdata = {
             name: name,
@@ -125,10 +125,11 @@ export default function Main() {
             requestOptions
         );
         const data = await response.json();
-        let messageTarget = messages.findIndex(obj => obj.id === data.id)
-        let updatedArr = [...messages]
-        updatedArr[messageTarget].message = data.message;
-        setMessages(updatedArr);
+
+        const messagesCopy = [...messages];
+        const index = messagesCopy.findIndex(message => message.id === data.id);
+        messagesCopy[index] = data;
+        setMessages(messagesCopy);
     }
 
     function changeChatRoom(id) {

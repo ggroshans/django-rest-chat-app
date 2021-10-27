@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 export default function MessageList(props) {
     const [text, setText] = useState("");
 
+
     function handleChange(e) {
         setText(e.target.value);
     }

@@ -4,6 +4,8 @@ from .serializers import RoomSerializer, MessageSerializer
 from .models import Room, Message
 from django.contrib.auth.models import User
 
+from .permissions import IsOwnerOrReadOnly
+
 
 # Create your views here.
  
@@ -29,4 +31,5 @@ class MessageListAPIView(generics.ListCreateAPIView):
 class MessageDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
+    permission_classes = (IsOwnerOrReadOnly, )
     
