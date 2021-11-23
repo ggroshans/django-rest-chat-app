@@ -4,6 +4,7 @@ import { FiSend } from "react-icons/fi";
 import { FaRegEdit } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
+
 export default function Message(props) {
     const [updatedText, setUpdatedText] = useState("");
     const [editMessageFlag, setEditMessageFlag] = useState(false);
@@ -26,6 +27,8 @@ export default function Message(props) {
     function handleChange(e) {
         setUpdatedText(e.currentTarget.value);
     }
+
+    console.log("PROPSSSSSSS", props);
 
     let htmlRendered;
 
@@ -59,22 +62,26 @@ export default function Message(props) {
         );
     } else {
         htmlRendered = (
-            <div className="message-bubble">
-                <div className="message-icon-container">
-                    <button
-                        onClick={(e) => handleEditClick(e)}
-                        className="message-edit-btn"
-                    >
-                        <FaRegEdit />
-                    </button>
-                    <button
-                        value={props.id}
-                        onClick={(e) => handleCloseClick(e)}
-                        className="message-close-btn"
-                    >
-                        <AiOutlineClose />
-                    </button>
-                </div>
+            <div className={props.currentUser.username === props.username ? "message-bubble-user" : "message-bubble"}>
+                {props.currentUser.username === props.username ? (
+                    <div className="message-icon-container">
+                        <button
+                            onClick={(e) => handleEditClick(e)}
+                            className="message-edit-btn"
+                        >
+                            <FaRegEdit />
+                        </button>
+                        <button
+                            value={props.id}
+                            onClick={(e) => handleCloseClick(e)}
+                            className="message-close-btn"
+                        >
+                            <AiOutlineClose />
+                        </button>
+                    </div>
+                ) : (
+                    ""
+                )}
 
                 <div className="message-content-container">
                     <span className="message-content-author">

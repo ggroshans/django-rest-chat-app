@@ -1,12 +1,12 @@
 import "./Main.css";
 import React from "react";
 import Cookies from "js-cookie";
-import ChatRoomList from "./ChatRoomList/ChatRoomList";
+import ChatRoomList from "./ChatroomList/ChatroomList";
 import MessageList from "./MessageList/MessageList";
 import { useState, useEffect, useRef } from "react";
 import { MdSettingsInputAntenna } from "react-icons/md";
 
-export default function Main() {
+export default function Main(props) {
     const [chatRooms, setChatRooms] = useState([]);
     const [messages, setMessages] = useState([]);
     const [currentChatRoom, setCurrentChatRoom] = useState(null);
@@ -151,6 +151,7 @@ export default function Main() {
                 deleteMessage={deleteMessage}
                 updateMessage={updateMessage}
                 currentChatRoom = {currentChatRoom}
+                currentUser={props.currentUser}
             />
         </div>
     );

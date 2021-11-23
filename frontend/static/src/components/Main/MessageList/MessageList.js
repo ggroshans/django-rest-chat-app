@@ -40,6 +40,7 @@ export default function MessageList(props) {
                         {...message}
                         deleteMessage={props.deleteMessage}
                         updateMessage={props.updateMessage}
+                        currentUser={props.currentUser}
                     />
                 );
             })}

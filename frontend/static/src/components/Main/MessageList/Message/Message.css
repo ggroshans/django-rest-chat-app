@@ -1,4 +1,4 @@
-.message-bubble, .message-bubble-editing {
+.message-bubble-user, .message-bubble-editing {
 	display: flex;
 	flex-direction: row-reverse;
 	justify-content: space-between;
@@ -12,6 +12,18 @@
     width: 65vw;
 	text-align: left;
 	border-radius: 0;
+}
+
+.message-bubble {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	text-align: left;
+	margin: 0.25rem 0.5rem 0.25rem 0rem;
+    padding: 0.25rem 0.25rem 0.25rem 0.75rem;
+	width: 65vw;
+	border-radius: 0;
+	background: transparent;
 }
 
 .message-bubble:hover, .message-bubble-editing:hover {

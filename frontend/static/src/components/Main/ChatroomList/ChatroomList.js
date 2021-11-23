@@ -1,6 +1,6 @@
 import "./ChatRoomList.css";
 import React from "react";
-import ChatRoom from "./ChatRoom/ChatRoom";
+import ChatRoom from "./Chatroom/Chatroom";
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 import { MdAddCircle } from "react-icons/md"

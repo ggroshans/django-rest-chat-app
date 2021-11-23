@@ -11,11 +11,13 @@ import { useState, useEffect } from "react";
 function App() {
     const [userStatus, setUserStatus] = useState("splash");
     const [isAuth, setIsAuth] = useState(false);
+    const [currentUser, setCurrentUser] = useState()
 
     useEffect( ()=> {
         const checkAuth = async () => {
             const response = await fetch('/rest-auth/user/');
             const data = await response.json()
+            setCurrentUser(data);
             if (response.ok === false) {
                 setUserStatus("splash")
             }
@@ -84,7 +86,7 @@ function App() {
             body = <Login handleLogin={handleLogin} changeStatus={changeStatus} isAuth={isAuth}/>;
             break;
         case "approved":
-            body = <Main />;
+            body = <Main currentUser={currentUser}/>;
             break;
     }
 
