@@ -9,7 +9,7 @@
 	color: white;
 	margin: 0.25rem 0.5rem 0.25rem 0rem;
     padding: 0.25rem 0.25rem 0.25rem 0.75rem;
-    width: 65vw;
+    /* width: 65vw; */
 	text-align: left;
 	border-radius: 0;
 }
@@ -21,7 +21,7 @@
 	text-align: left;
 	margin: 0.25rem 0.5rem 0.25rem 0rem;
     padding: 0.25rem 0.25rem 0.25rem 0.75rem;
-	width: 65vw;
+	/* width: 65vw; */
 	border-radius: 0;
 	background: transparent;
 }
@@ -78,4 +78,8 @@
 
 .message-content-author {
 	color: goldenrod;
+}
+
+.message-content-body {
+	margin-right: 1.5rem;
 }

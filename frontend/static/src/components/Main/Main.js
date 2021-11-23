@@ -24,9 +24,8 @@ export default function Main(props) {
         }
     }, [currentChatRoom]);
 
-
     async function grabChatRooms() {
-            await fetch(`/api/chatrooms/`)
+        await fetch(`/api/chatrooms/`)
             .then((response) => response.json())
             .then((data) => setChatRooms(data));
     }
@@ -38,12 +37,12 @@ export default function Main(props) {
                 "X-CSRFToken": Cookies.get("csrftoken"),
             },
         });
-        
+
         let updatedMessages = [...messages];
-        let index = updatedMessages.findIndex(message => message.id === id);
+        let index = updatedMessages.findIndex((message) => message.id === id);
         updatedMessages.splice(index, 1);
-        setMessages(updatedMessages)
-        setCurrentChatRoom(null)
+        setMessages(updatedMessages);
+        setCurrentChatRoom(null);
     }
 
     async function deleteChatRoom(id) {
@@ -54,21 +53,23 @@ export default function Main(props) {
             },
         });
         let updatedChatRooms = [...chatRooms];
-        let index = updatedChatRooms.findIndex(chatroom => chatroom.id === id);
+        let index = updatedChatRooms.findIndex(
+            (chatroom) => chatroom.id === id
+        );
         updatedChatRooms.splice(index, 1);
-        setChatRooms(updatedChatRooms)
-        setCurrentChatRoom(null)
+        setChatRooms(updatedChatRooms);
+        setCurrentChatRoom(null);
     }
 
     async function grabMessages() {
         if (currentChatRoom === undefined) {
-            setCurrentChatRoom(null)
+            setCurrentChatRoom(null);
         } else {
-        await fetch(`/api/chatrooms/${currentChatRoom}/messages/`)
-            .then((response) => response.json())
-            .then((data) => setMessages([...data]));
+            await fetch(`/api/chatrooms/${currentChatRoom}/messages/`)
+                .then((response) => response.json())
+                .then((data) => setMessages([...data]));
+        }
     }
-}
     async function postChatRoom(name) {
         let POSTdata = {
             name: name,
@@ -82,8 +83,8 @@ export default function Main(props) {
             body: JSON.stringify(POSTdata),
         });
         const data = await response.json();
-        let updatedChatrooms = [...chatRooms]
-        updatedChatrooms.push(data)
+        let updatedChatrooms = [...chatRooms];
+        updatedChatrooms.push(data);
         setChatRooms(updatedChatrooms);
     }
 
@@ -103,12 +104,11 @@ export default function Main(props) {
                 },
                 body: JSON.stringify(POSTdata),
             }
-            
         );
-        const data = await response.json()
-        let updatedMessages = [...messages]
-        updatedMessages.push(data)
-        setMessages(updatedMessages)
+        const data = await response.json();
+        let updatedMessages = [...messages];
+        updatedMessages.push(data);
+        setMessages(updatedMessages);
     }
 
     async function updateMessage(id, obj) {
@@ -127,7 +127,9 @@ export default function Main(props) {
         const data = await response.json();
 
         const messagesCopy = [...messages];
-        const index = messagesCopy.findIndex(message => message.id === data.id);
+        const index = messagesCopy.findIndex(
+            (message) => message.id === data.id
+        );
         messagesCopy[index] = data;
         setMessages(messagesCopy);
     }
@@ -137,22 +139,29 @@ export default function Main(props) {
     }
 
     return (
-        <div className="main-container">
-            <ChatRoomList
-                chatRooms={chatRooms}
-                changeChatRoom={changeChatRoom}
-                postChatRoom={postChatRoom}
-                deleteChatRoom={deleteChatRoom}
-            />
-            <MessageList
-                messages={messages}
-                grabMessages={grabMessages}
-                postMessage={postMessage}
-                deleteMessage={deleteMessage}
-                updateMessage={updateMessage}
-                currentChatRoom = {currentChatRoom}
-                currentUser={props.currentUser}
-            />
+        <div className="main-container container">
+            <div className="row">
+                <div className="col-sm">
+                    <ChatRoomList
+                        chatRooms={chatRooms}
+                        changeChatRoom={changeChatRoom}
+                        postChatRoom={postChatRoom}
+                        deleteChatRoom={deleteChatRoom}
+                    />
+                </div>
+
+                <div className="col-sm">
+                    <MessageList
+                        messages={messages}
+                        grabMessages={grabMessages}
+                        postMessage={postMessage}
+                        deleteMessage={deleteMessage}
+                        updateMessage={updateMessage}
+                        currentChatRoom={currentChatRoom}
+                        currentUser={props.currentUser}
+                    />
+                </div>
+            </div>
         </div>
     );
 }

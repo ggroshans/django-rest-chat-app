@@ -4,8 +4,8 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-    margin-bottom: 2rem;
-    width: 75vw;
+    /* margin-bottom: 2rem; */
+    /* width: 75vw; */
     overflow: hidden;
     background-color: #36393F;
 }
@@ -14,7 +14,7 @@
     justify-content: center;
     align-items: flex-end;
     width: 100%;
-    margin: 2rem 0.75rem;
+    /* margin: 2rem 0.75rem; */
 
 }
 
@@ -22,10 +22,10 @@
     background-color: transparent;
     color: #24AB6D;
     border: 1px solid #24AB6D;
-    width: 9vw;
+    /* width: 9vw; */
     height: 2rem;
     padding: 0.1rem;
-    margin: 0rem 0rem 0rem 1vw;
+    /* margin: 0rem 0rem 0rem 1vw; */
 }
 .submit-message-btn:hover {
     background-color: transparent;
@@ -34,7 +34,7 @@
 
 .enter-message-input {
     height: 2rem;
-    width: 55vw;
+    /* width: 55vw; */
 }
 
 .not-in-chatroom-heading {
