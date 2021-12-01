@@ -5,3 +5,11 @@
     height: 70vh;
     background-color: #36393F;
 }
+
+
+@media only screen and (max-width: 780px) {
+    .main-container {
+        margin: auto;
+        justify-content: center;
+    }
+  }

@@ -141,7 +141,7 @@ export default function Main(props) {
     return (
         <div className="main-container container">
             <div className="row">
-                <div className="col-sm">
+                <div className="col-md">
                     <ChatRoomList
                         chatRooms={chatRooms}
                         changeChatRoom={changeChatRoom}
@@ -150,7 +150,7 @@ export default function Main(props) {
                     />
                 </div>
 
-                <div className="col-sm">
+                <div className="col-md">
                     <MessageList
                         messages={messages}
                         grabMessages={grabMessages}
