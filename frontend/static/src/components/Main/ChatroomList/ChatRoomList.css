@@ -61,3 +61,12 @@
     width: 8rem;
     height: 2rem;
 }
+
+
+
+@media only screen and (max-width: 976px) {
+    .chatroom-list-container {
+      align-items: center;
+      margin: auto;
+    }
+  }
