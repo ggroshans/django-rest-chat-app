@@ -69,6 +69,7 @@ export default function ChatRoomList(props) {
                         collapseOnSelect
                         expand="lg"
                         variant="dark"
+                        
                     >
                             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                             <Navbar.Collapse id="responsive-navbar-nav">

@@ -2,7 +2,7 @@
 .main-container {
     display: flex;
     justify-content: space-between;
-    height: 70vh;
+    min-height: 70vh;
     background-color: #36393F;
 }
 
