@@ -5,10 +5,15 @@
     justify-content: flex-end;
     align-items: flex-start;
     /* margin-bottom: 2rem; */
-    /* width: 75vw; */
+    width: 100%;
     overflow: hidden;
     background-color: #36393F;
 }
+
+.new-message-container {
+    width: 100%;
+}
+
 .new-message-container form {
     display: flex;
     justify-content: center;
@@ -34,7 +39,7 @@
 
 .enter-message-input {
     height: 2rem;
-    /* width: 55vw; */
+    width: 90%;
 }
 
 .not-in-chatroom-heading {
